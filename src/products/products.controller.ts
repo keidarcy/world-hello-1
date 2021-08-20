@@ -14,24 +14,28 @@ export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
   @Post()
-  addProduct(
+  async addProduct(
     @Body('title') title: string,
     @Body('description') description: string,
     @Body('price') price: number,
-  ): { id: string } {
-    const id = this.productsService.insertProduct(title, description, price);
+  ) {
+    const id = await this.productsService.insertProduct(
+      title,
+      description,
+      price,
+    );
     return { id };
   }
 
   @Get()
-  getAllProducts() {
-    const products = this.productsService.getProducts();
+  async getAllProducts() {
+    const products = await this.productsService.getProducts();
     return products;
   }
 
   @Get(':id')
-  getProduct(@Param('id') productId: string) {
-    return this.productsService.getSingleProduct(productId);
+  async getProduct(@Param('id') productId: string) {
+    await this.productsService.getSingleProduct(productId);
   }
 
   @Patch(':id')
