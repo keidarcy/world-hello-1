@@ -3,7 +3,7 @@ import './App.css';
 
 import React, { useEffect, useState } from 'react';
 
-const BASE_URI = 'http://localhost:3001';
+const API_URL = 'http://localhost:3001';
 
 // interface TodoProps {
 //   title: string;
@@ -22,7 +22,7 @@ function App() {
   const [todos, setTodos] = useState('');
   useEffect(() => {
     const fn = async () => {
-      const data = await (await fetch(BASE_URI)).json();
+      const data = await (await fetch(API_URL)).json();
       setTodos(data);
     };
     fn();
