@@ -1,0 +1,18 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: latest
+    commands:
+      - echo "in install"
+  pre_build:
+    commands:
+      - echo "in pre_build"
+  build:
+    commands:
+      - echo "in build"
+      - grep -Fq "Congratulations" index.html
+  post_build:
+    commands:
+      - echo "in post build"
